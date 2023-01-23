@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ada-cruz <ada-cruz@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ada-cruz <ada-cruz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 11:44:12 by ada-cruz          #+#    #+#             */
-/*   Updated: 2023/01/18 18:29:04 by ada-cruz         ###   ########.fr       */
+/*   Updated: 2023/01/24 00:08:11 by ada-cruz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	rotate(int **stack, int sizestack)
 		return ;
 	i = 0;
 	temp = *stack;
-	updated_stack = malloc(sizeof(int) * sizestack);
+	updated_stack = ft_calloc(sizeof(int) , sizestack);
 	if (!updated_stack)
 		return ;
 	while (i < sizestack - 1)
@@ -60,7 +60,7 @@ void	reverse(int **stack, int sizestack)
 	updated_stack = malloc(sizeof(int) * sizestack);
 	if (!updated_stack)
 		return ;
-	while (i < sizestack)
+	while (i < sizestack - 1)
 	{
 		updated_stack[i] = temp[i - 1];
 		i++;

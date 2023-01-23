@@ -4,7 +4,7 @@ LIBFT = $(LIBFT_PATH)/libft.a
 INCLUDES = -I ./includes -I $(LIBFT_PATH)
 CFLAGS = -g -Wall -Wextra -Werror $(includes)
 
-SRCS = moves.c moves2.c order.c main.c utils.c
+SRCS = moves.c moves2.c order.c main.c utils.c utilsextension.c
 OBJS = $(addprefix sources/,$(SRCS:%.c=%.o))
 
 RM = rm -f
