@@ -6,7 +6,7 @@
 /*   By: ada-cruz <ada-cruz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 00:00:56 by ada-cruz          #+#    #+#             */
-/*   Updated: 2022/09/19 23:46:17 by ada-cruz         ###   ########.fr       */
+/*   Updated: 2022/11/07 21:26:24 by ada-cruz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# define BUFFER_SIZE 1
+
+typedef struct	s_list
+{
+	void			*content;
+	struct s_list	*next;
+} t_list;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -50,5 +57,8 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+t_list	*ft_lstnew(void *content);
+int		ft_lstsize(t_list *lst);
+char	*get_next_line(int fd);
 
 #endif
