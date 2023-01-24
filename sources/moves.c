@@ -6,7 +6,7 @@
 /*   By: ada-cruz <ada-cruz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 11:35:22 by ada-cruz          #+#    #+#             */
-/*   Updated: 2023/01/23 23:53:49 by ada-cruz         ###   ########.fr       */
+/*   Updated: 2023/01/24 01:30:30 by ada-cruz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	update_stack_b(int *dest, int *origin, int size)
 		return ;
 	while (i < size - 1)
 	{
-		printf("\ni = %d\tnúmero: %d\n", i, origin[i]);
 		dest[i + 1] = origin[i];
 		i++;
 	}
@@ -47,11 +46,11 @@ void	push(int **dest, int **origin, int sizedest, int sizeorigin)
 	int	*updated_origin;
 
 	if (sizedest > 0)
-		updated_dest = ft_calloc(sizedest , sizeof(int));
+		updated_dest = ft_calloc(sizedest, sizeof(int));
 	else
 		updated_dest = NULL;
 	if (sizeorigin > 0)
-		updated_origin = ft_calloc(sizeorigin , sizeof(int));
+		updated_origin = ft_calloc(sizeorigin, sizeof(int));
 	else
 		updated_origin = NULL;
 	update_stack_a(updated_origin, *origin, sizeorigin);

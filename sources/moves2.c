@@ -6,7 +6,7 @@
 /*   By: ada-cruz <ada-cruz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 11:44:12 by ada-cruz          #+#    #+#             */
-/*   Updated: 2023/01/24 00:08:11 by ada-cruz         ###   ########.fr       */
+/*   Updated: 2023/01/24 01:09:21 by ada-cruz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	rotate(int **stack, int sizestack)
 		return ;
 	i = 0;
 	temp = *stack;
-	updated_stack = ft_calloc(sizeof(int) , sizestack);
+	updated_stack = ft_calloc(sizestack, sizeof(int));
 	if (!updated_stack)
 		return ;
 	while (i < sizestack - 1)

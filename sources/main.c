@@ -6,7 +6,7 @@
 /*   By: ada-cruz <ada-cruz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 16:09:15 by ada-cruz          #+#    #+#             */
-/*   Updated: 2023/01/24 00:09:58 by ada-cruz         ###   ########.fr       */
+/*   Updated: 2023/01/24 14:45:14 by ada-cruz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 
 	if (argc <= 1)
 		return (0);
-	stack_a = malloc((sizeof(int) * argc - 1));
+	stack_a = ft_calloc(sizeof(int) , argc - 1);
 	stack_b = NULL;
 	if (!stack_a)
 	   return (1);
@@ -36,14 +36,12 @@ int	main(int argc, char **argv)
 	size_a = argc - 1;
 	size_b = 0;
 	
-	renumber(stack_a, size_a);
-	//if (size_a <= 3)
-		stack_a = sort_3_number(&stack_a, size_a);
-	//sort_many_numbers(stack_a, size_a, stack_b, size_b);
+	if (itsorganized(stack_a, size_a))
+		return (0);
+	if (size_a <= 3)
+		stack_a = sort_3_number(stack_a, size_a);
 	//stack_a = sort_5_number(stack_a, stack_b, size_a, size_b);
-	//if (stack_a)
-		//free(stack_a);
-	//if (stack_b)
-		//free(stack_b);
-
+	//renumber(stack_a, size_a);
+	//sort_many_numbers(stack_a, size_a, stack_b, size_b);
+	//free(stack_a);
 }
