@@ -6,7 +6,7 @@
 /*   By: ada-cruz <ada-cruz@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 16:09:15 by ada-cruz          #+#    #+#             */
-/*   Updated: 2023/01/24 15:14:51 by ada-cruz         ###   ########.fr       */
+/*   Updated: 2023/01/24 15:22:17 by ada-cruz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,6 @@ int	main(int argc, char **argv)
 	//renumber(stack_a, size_a);
 	//sort_many_numbers(stack_a, size_a, stack_b, size_b);
 	free(stack_a);
+	//testando
+	
 }
