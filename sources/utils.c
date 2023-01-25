@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ada-cruz <ada-cruz@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: ada-cruz <ada-cruz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 01:50:21 by ada-cruz          #+#    #+#             */
-/*   Updated: 2023/01/24 00:17:56 by ada-cruz         ###   ########.fr       */
+/*   Updated: 2023/01/24 18:02:14 by ada-cruz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,10 @@ int	bigger_binary(int *stacka, int sizea)
 		amount_of_binary++;
 	}
 	return (amount_of_binary);
+}
+
+int	error(void)
+{
+	ft_putstr_fd ("Error\n", 2);
+	return (1);
 }
