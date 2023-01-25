@@ -14,5 +14,16 @@ all: libft $(NAME)
 $(NAME): $(LIBFT) $(OBJS)
 		cc $(CFLAGS) $(INCLUDE) $(OBJS) $(LIBFT) -o $@
 
+clean:
+	@rm	-f $(OBJS)
+	@make $@ -C $(LIBFT_PATH)
+
+fclean: clean
+	@rm -f $(NAME)
+	@make $@ -C $(LIBFT_PATH)
+
+re: fclean all
+	@make $@ -C $(LIBFT_PATH)
+
 libft:
 	make -C $(LIBFT_PATH)
