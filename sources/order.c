@@ -3,113 +3,126 @@
 /*                                                        :::      ::::::::   */
 /*   order.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ada-cruz <ada-cruz@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: ada-cruz <ada-cruz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 13:45:21 by ada-cruz          #+#    #+#             */
-/*   Updated: 2023/01/24 13:56:05 by ada-cruz         ###   ########.fr       */
+/*   Updated: 2023/01/25 20:30:28 by ada-cruz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	smallest_number(int *stacka, int sizea)
+int	small_num_position(int *stacka, int sizea)
 {
 	int	i;
 	int	temp;
 
 	i = 0;
-	temp = stacka[i];
+	temp = i;
 	while (i < sizea)
 	{
-		if (temp > stacka[i])
-			temp = stacka[i];
+		if (stacka[temp] > stacka[i])
+			temp = i;
 		i++;
 	}
 	return (temp);
 }
 
-int	*sort_3_number(int *stacka, int sizea)
+void	pre_sort_5_num(int **stacka, int **stackb, int *sizea, int *sizeb)
+{
+	int	small_pos;
+
+	while (*sizea > 3)
+	{
+		small_pos = small_num_position(*stacka, *sizea);
+		if (small_pos == 0)
+		{
+			push(stackb, stacka, ++(*sizeb), --(*sizea));
+			ft_putstr_fd("pb\n", 1);
+		}
+		else if (small_pos <= 2)
+		{
+			rotate(stacka, *sizea);
+			ft_putstr_fd("ra\n", 1);
+		}
+		else
+		{
+			reverse(stacka, *sizea);
+			ft_putstr_fd("rra\n", 1);
+		}	
+	}
+}
+
+int	*sort_3_number(int **stacka, int sizea)
 {
 	if (sizea == 2)
 	{
-		if (stacka[0] > stacka[1])
+		if ((*stacka)[0] > (*stacka)[1])
 		{
-			swap(stacka, sizea);
+			swap(*stacka, sizea);
 			ft_putstr_fd("sa\n", 1);
-			return (stacka);
+			return (*stacka);
 		}
 	}
-	if (stacka[0] > stacka[1] && stacka[0] > stacka[2])
+	if ((*stacka)[0] > (*stacka)[1] && (*stacka)[0] > (*stacka)[2])
 	{
-		bignumisfirst(&stacka);
-		return (stacka);
+		bignumisfirst(stacka);
+		return (*stacka);
 	}
-	if (stacka[0] < stacka[1] && stacka[1] > stacka[2])
+	if ((*stacka)[0] < (*stacka)[1] && (*stacka)[1] > (*stacka)[2])
 	{
-		bignumissecond(&stacka);
-		return (stacka);
+		bignumissecond(stacka);
+		return (*stacka);
 	}
-	if (stacka[0] < stacka[2] && stacka[1] < stacka[2])
+	if ((*stacka)[0] < (*stacka)[2] && (*stacka)[1] < (*stacka)[2])
 	{
-		bignumisthird(&stacka);
-		return (stacka);
+		bignumisthird(stacka);
+		return (*stacka);
 	}
-	return (stacka);
+	return (*stacka);
 }
 
-int	*sort_5_number(int *stacka, int *stackb, int sizea, int sizeb)
+int	*sort_5_number(int **stacka, int **stackb, int sizea, int sizeb)
 {
-	int	smallest;
-
-	while (sizea > 3)
-	{
-		smallest = smallest_number(stacka, sizea);
-		if (stacka[0] == smallest)
-		{
-			push(&stackb, &stacka, ++sizeb, --sizea);
-			ft_putstr_fd("pb\n", 1);
-		}
-		rotate(&stacka, sizea);
-		ft_putstr_fd("ra\n", 1);
-	}
-	stacka = sort_3_number(stacka, sizea);
-	push(&stacka, &stackb, ++sizea, --sizeb);
+	pre_sort_5_num(stacka, stackb, &sizea, &sizeb);
+	*stacka = sort_3_number(stacka, sizea);
+	push(stacka, stackb, ++sizea, --sizeb);
 	ft_putstr_fd("pa\n", 1);
 	if (sizeb)
 	{
-		push(&stacka, &stackb, ++sizea, --sizeb);
+		push(stacka, stackb, ++sizea, --sizeb);
 		ft_putstr_fd("pa\n", 1);
 	}
-	if (stackb)
-		free(stackb);
-	return (stacka);
+	if (*stackb)
+		free(*stackb);
+	return (*stacka);
 }
 
-void	sort_many_numbers(int *stacka, int sizea, int *stackb, int sizeb)
+void	sort_many_numbers(int *stk_a, int sizea, int *stk_b, int sizeb)
 {
 	int	amount_of_binary;
 	int	i;
 	int	j;
 
-	amount_of_binary = bigger_binary(stacka, sizea);
+	amount_of_binary = bigger_binary(sizea);
 	i = 0;
 	while (i++ < amount_of_binary)
 	{
 		j = 0;
-		while (j++ < sizea)
+		while (j++ < sizea + sizeb)
 		{
-			if (stacka[0] >> (i - 1) & 1)
+			if (stk_a[0] >> (i - 1) & 1)
 			{
-				rotate(&stacka, sizea);
+				rotate(&stk_a, sizea);
 				ft_putstr_fd("ra\n", 1);
 			}
 			else
 			{
-				push(&stackb, &stacka, ++sizeb, --sizea);
+				push(&stk_b, &stk_a, ++sizeb, --sizea);
 				ft_putstr_fd("pb\n", 1);
 			}
 		}
-		backtoa(&stacka, &stackb, sizea, sizeb);
+		backtoa(&stk_a, &stk_b, &sizea, &sizeb);
 	}
-	free(stacka);
+	free(stk_a);
 }

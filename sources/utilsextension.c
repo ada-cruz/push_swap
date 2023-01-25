@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utilsextension.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ada-cruz <ada-cruz@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: ada-cruz <ada-cruz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 17:47:02 by ada-cruz          #+#    #+#             */
-/*   Updated: 2023/01/24 01:31:44 by ada-cruz         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:38:05 by ada-cruz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,13 @@ void	bignumisthird(int **stacka)
 	*stacka = stk;
 }
 
-void	backtoa(int **stacka, int **stackb, int sizea, int sizeb)
+void	backtoa(int **stacka, int **stackb, int *sizea, int *sizeb)
 {
 	while (*stackb)
 	{
-		push(stacka, stackb, ++sizea, --sizeb);
+		*sizea += 1;
+		*sizeb -= 1;
+		push(stacka, stackb, *sizea, *sizeb);
 		ft_putstr_fd("pa\n", 1);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ada-cruz <ada-cruz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 01:50:21 by ada-cruz          #+#    #+#             */
-/*   Updated: 2023/01/24 18:02:14 by ada-cruz         ###   ########.fr       */
+/*   Updated: 2023/01/25 17:19:38 by ada-cruz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,13 @@ void	renumber(int *stacka, int sizea)
 		free (operatedstack);
 }
 
-int	bigger_binary(int *stacka, int sizea)
+int	bigger_binary(int sizea)
 {
-	int	i;
 	int	bigger_num;
 	int	amount_of_binary;
 
-	i = 1;
-	bigger_num = stacka[0];
+	bigger_num = sizea - 1;
 	amount_of_binary = 0;
-	while (i < sizea)
-	{
-		if (stacka[i] > bigger_num)
-			bigger_num = stacka[i];
-		i++;
-	}
 	while (bigger_num > 0)
 	{
 		bigger_num = bigger_num / 2;

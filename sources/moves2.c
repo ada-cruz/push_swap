@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ada-cruz <ada-cruz@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: ada-cruz <ada-cruz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 11:44:12 by ada-cruz          #+#    #+#             */
-/*   Updated: 2023/01/24 01:09:21 by ada-cruz         ###   ########.fr       */
+/*   Updated: 2023/01/25 20:00:54 by ada-cruz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	reverse(int **stack, int sizestack)
 	updated_stack = malloc(sizeof(int) * sizestack);
 	if (!updated_stack)
 		return ;
-	while (i < sizestack - 1)
+	while (i < sizestack)
 	{
 		updated_stack[i] = temp[i - 1];
 		i++;
